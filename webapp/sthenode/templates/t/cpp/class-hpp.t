@@ -52,7 +52,7 @@
 )%,Include)%,
 )%%
 %%Namespace_begin%%
-%typedef %Implements% %Implements%t_implements;
+%%if-no(%is_name%,,%(%if(%Extends%,%(%if(%Implements%,%(typedef implement_base %Implements%t_implements;
 ///////////////////////////////////////////////////////////////////////
 ///  Class: %Implements%t
 ///////////////////////////////////////////////////////////////////////
@@ -63,16 +63,16 @@ public:
 };
 typedef %Implements%t<> %Implements%;
 
-typedef %Implements% %Name%t_implements;
-typedef %Extends% %Name%t_extends;
+)%)%%if(%Implements%,%(typedef %Implements% %Name%t_implements;
+)%)%typedef %Extends% %Name%t_extends;
 ///////////////////////////////////////////////////////////////////////
 ///  Class: %Name%t
 ///////////////////////////////////////////////////////////////////////
-template <class TImplements = %Name%t_implements, class TExtends = %Name%t_extends>
-class _EXPORT_CLASS %Name%t: virtual public TImplements, public TExtends {
+template <%if(%Implements%,%(class TImplements = %Name%t_implements, )%)%class TExtends = %Name%t_extends>
+class _EXPORT_CLASS %Name%t: %if(%Implements%,%(virtual public TImplements, )%)%public TExtends {
 public:
-    typedef TImplements implements;
-    typedef TExtends extends;
+    %if(%Implements%,%(typedef TImplements implements;
+    )%)%typedef TExtends extends;
 
     %Name%t(const %Name%t &copy) {
     }
@@ -82,7 +82,36 @@ public:
     }
 };
 typedef %Name%t<> %Name%;
-%Namespace_end%
+)%,%(%if(%Implements%,%(typedef %Implements% %Name%t_implements;
+///////////////////////////////////////////////////////////////////////
+///  Class: %Name%t
+///////////////////////////////////////////////////////////////////////
+template <class TImplements = %Name%t_implements>
+class _EXPORT_CLASS %Name%t: virtual public TImplements {
+public:
+    typedef TImplements implements;
+
+    %Name%t(const %Name%t &copy) {
+    }
+    %Name%t() {
+    }
+    virtual ~%Name%t() {
+    }
+};
+typedef %Name%t<> %Name%;
+)%,%(///////////////////////////////////////////////////////////////////////
+///  Class: %Name%
+///////////////////////////////////////////////////////////////////////
+class _EXPORT_CLASS %Name% {
+public:
+    %Name%(const %Name% &copy) {
+    }
+    %Name%() {
+    }
+    virtual ~%Name%() {
+    }
+};
+)%)%)%)%)%)%%Namespace_end%
 #endif /// %IFNDEF_DIRECTORY%_%BASE%_%EXTENSION% 
 %
 %)%)%
