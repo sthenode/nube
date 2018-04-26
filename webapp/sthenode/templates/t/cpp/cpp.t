@@ -40,7 +40,7 @@
 /// Author: $author$
 ///   Date: %date()%
 ///////////////////////////////////////////////////////////////////////
-#include "%Include_directory%/%Base%.hpp"
+#include "%Include_directory%/%Base%.%Header%"
 
 %Namespace_begin%%Namespace_end%%
 %

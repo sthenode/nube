@@ -39,6 +39,10 @@
 %Base,%(%else-then(%Base%,%(%base%)%)%)%,%
 %BASE,%(%else-then(%BASE%,%(%toupper(%Base%)%)%)%)%,%
 %base,%(%else-then(%_Base%,%(%tolower(%Base%)%)%)%)%,%
+%header,%(%else-then(%header%,%(hpp)%)%)%,%
+%Header,%(%else-then(%Header%,%(%header%)%)%)%,%
+%HEADER,%(%else-then(%HEADER%,%(%toupper(%Header%)%)%)%)%,%
+%header,%(%else-then(%_Header%,%(%tolower(%Header%)%)%)%)%,%
 %extension,%(%else-then(%extension%,%(hpp)%)%)%,%
 %Extension,%(%else-then(%Extension%,%(%extension%)%)%)%,%
 %EXTENSION,%(%else-then(%EXTENSION%,%(%toupper(%Extension%)%)%)%)%,%
@@ -66,7 +70,7 @@
 %Sys_include,%(%else-then(%Sys_include%,%(%sys_include%)%)%)%,%
 %SYS_INCLUDE,%(%else-then(%SYS_INCLUDE%,%(%toupper(%Sys_include%)%)%)%)%,%
 %sys_include,%(%else-then(%_Sys_include%,%(%tolower(%Sys_include%)%)%)%)%,%
-%namespace,%(%else-then(%namespace%,%(%Include_directory%)%)%)%,%
+%namespace,%(%else-then(%if-no(%is_namespace%,,%namespace%)%,%(%if-no(%is_namespace%,,%Include_directory%)%)%)%)%,%
 %Namespace,%(%else-then(%Namespace%,%(%namespace%)%)%)%,%
 %NAMESPACE,%(%else-then(%NAMESPACE%,%(%toupper(%Namespace%)%)%)%)%,%
 %namespace,%(%else-then(%_Namespace%,%(%tolower(%Namespace%)%)%)%)%,%
