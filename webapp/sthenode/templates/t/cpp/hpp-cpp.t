@@ -43,15 +43,19 @@
 %Header,%(%else-then(%Header%,%(%header%)%)%)%,%
 %HEADER,%(%else-then(%HEADER%,%(%toupper(%Header%)%)%)%)%,%
 %header,%(%else-then(%_Header%,%(%tolower(%Header%)%)%)%)%,%
+%cheader,%(%else-then(%cheader%,%(CHeader)%)%)%,%
+%CHeader,%(%else-then(%CHeader%,%(hxx)%)%)%,%
+%CHEADER,%(%else-then(%CHEADER%,%(%toupper(%CHeader%)%)%)%)%,%
+%cheader,%(%else-then(%_CHeader%,%(%tolower(%CHeader%)%)%)%)%,%
 %extension,%(%else-then(%extension%,%(hpp)%)%)%,%
 %Extension,%(%else-then(%Extension%,%(%extension%)%)%)%,%
 %EXTENSION,%(%else-then(%EXTENSION%,%(%toupper(%Extension%)%)%)%)%,%
 %extension,%(%else-then(%_Extension%,%(%tolower(%Extension%)%)%)%)%,%
-%directory,%(%else-then(%directory%,%(%else-then(%ifndef_directory%,%(xos)%)%)%)%)%,%
+%directory,%(%else-then(%if-no(%is_directory%,,%directory%)%,%(%else-then(%if-no(%is_ifndef%,,%ifndef_directory%)%,%(%if-no(%is_ifndef%,,xos)%)%)%)%)%)%,%
 %Directory,%(%else-then(%Directory%,%(%directory%)%)%)%,%
 %DIRECTORY,%(%else-then(%DIRECTORY%,%(%toupper(%Directory%)%)%)%)%,%
 %directory,%(%else-then(%_Directory%,%(%tolower(%Directory%)%)%)%)%,%
-%ifndef_directory,%(%else-then(%ifndef_directory%,%(%Directory%)%)%)%,%
+%ifndef_directory,%(%else-then(%if-no(%is_ifndef%,,%ifndef_directory%)%,%(%if-no(%is_ifndef%,,%Directory%)%)%)%)%,%
 %Ifndef_directory,%(%else-then(%Ifndef_directory%,%(%ifndef_directory%)%)%)%,%
 %Ifndef_directory,%(%
 %%then-if(%parse(%Ifndef_directory%,/,,_)%,_)%%
@@ -92,6 +96,25 @@
 %)%,%
 %NAMESPACE_END,%(%else-then(%NAMESPACE_END%,%(%toupper(%Namespace_end%)%)%)%)%,%
 %namespace_end,%(%else-then(%_Namespace_end%,%(%tolower(%Namespace_end%)%)%)%)%,%
+%c_namespace,%(%else-then(%c_namespace%,%(c_NAMESPACE)%)%)%,%
+%c_NAMESPACE,%(%else-then(%c_NAMESPACE%,%(%c_namespace%)%)%)%,%
+%C_NAMESPACE,%(%else-then(%C_NAMESPACE%,%(%toupper(%c_NAMESPACE%)%)%)%)%,%
+%c_namespace,%(%else-then(%_c_NAMESPACE%,%(%tolower(%c_NAMESPACE%)%)%)%)%,%
+%cnamespace_begin,%(%else-then(%cnamespace_begin%,%(#if defined(%c_NAMESPACE%)
+namespace %c_NAMESPACE% {
+#endif /* defined(%c_NAMESPACE%) */
+)%)%)%,%
+%CNamespace_begin,%(%else-then(%CNamespace_begin%,%(%cnamespace_begin%)%)%)%,%
+%CNAMESPACE_BEGIN,%(%else-then(%CNAMESPACE_BEGIN%,%(%toupper(%CNamespace_begin%)%)%)%)%,%
+%cnamespace_begin,%(%else-then(%_CNamespace_begin%,%(%tolower(%CNamespace_begin%)%)%)%)%,%
+%cnamespace_end,%(%else-then(%cnamespace_end%,%(
+#if defined(%c_NAMESPACE%)
+}
+#endif /* defined(%c_NAMESPACE%) */
+)%)%)%,%
+%CNamespace_end,%(%else-then(%CNamespace_end%,%(%cnamespace_end%)%)%)%,%
+%CNAMESPACE_END,%(%else-then(%CNAMESPACE_END%,%(%toupper(%CNamespace_end%)%)%)%)%,%
+%cnamespace_end,%(%else-then(%_CNamespace_end%,%(%tolower(%CNamespace_end%)%)%)%)%,%
 %enum_do,%(%else-then(%enum_do%,%(%else-then(%left(%enum_name%,/)%,%(%else-then(%enum_name%,%(%Name%)%)%)%)%)%)%)%,%
 %Enum_do,%(%else-then(%Enum_do%,%(%enum_do%)%)%)%,%
 %ENUM_DO,%(%else-then(%ENUM_DO%,%(%toupper(%Enum_do%)%)%)%)%,%
