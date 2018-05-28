@@ -13,22 +13,17 @@
 %# or otherwise) arising in any way out of the use of this software, 
 %# even if advised of the possibility of such damage.
 %#
-%#   File: h.t
+%#   File: mm.t
 %#
 %# Author: $author$
-%#   Date: 4/13/2018
+%#   Date: 5/16/2018
 %########################################################################
 %with(%
+%Header,%(%else-then(%mmHeader%,%(hh)%)%)%,%
 %%(%
-%%include(%filepath(%input%)%/file-h-c.t)%%
-%#ifndef %IFNDEF_DIRECTORY%_%BASE%_%EXTENSION%
-#define %IFNDEF_DIRECTORY%_%BASE%_%EXTENSION%
+%%include(%filepath(%input%)%/file-hpp-cpp.t)%%
+%#include "%Include_directory%/%Base%.%Header%"
 
-%if-then(%parse(%Include%,%(,)%,,,,%(#include "%Include%"
-)%,Include)%%parse(%Sys_include%,%(,)%,,,,%(#include <%Include%>
-)%,Include)%,
-)%%
-%%if-then(%cNamespace_begin%%cNamespace_end%,%(
-)%)%#endif /*/ %IFNDEF_DIRECTORY%_%BASE%_%EXTENSION% /*/
+%Namespace_begin%%Namespace_end%%
 %
 %)%)%
