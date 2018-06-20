@@ -75,7 +75,7 @@
 %Lib,%(%else-then(%Lib%,%(%lib%)%)%)%,%
 %LIB,%(%else-then(%LIB%,%(%toupper(%Lib%)%)%)%)%,%
 %lib,%(%else-then(%_Lib%,%(%tolower(%Lib%)%)%)%)%,%
-%exe,%(%else-then(%exe%,%(%if(%equal(%Target%,%Framework%)%,%(%else(%lib%,_exe)%)%)%)%)%)%,%
+%exe,%(%else-then(%exe%,%(%if(%HasExe%%equal(%Target%,%Framework%)%,%(%else(%lib%,_exe)%)%)%)%)%)%,%
 %Exe,%(%else-then(%Exe%,%(%exe%)%)%)%,%
 %EXE,%(%else-then(%EXE%,%(%toupper(%Exe%)%)%)%)%,%
 %exe,%(%else-then(%_Exe%,%(%tolower(%Exe%)%)%)%)%,%
