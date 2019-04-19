@@ -59,19 +59,23 @@
 %Out,%(%else-then(%Out%,%(%out%)%)%)%,%
 %OUT,%(%else-then(%OUT%,%(%toupper(%Out%)%)%)%)%,%
 %out,%(%else-then(%_Out%,%(%tolower(%Out%)%)%)%)%,%
-%lib,%(%else-then(%lib%,%(%else(%equal(EXE,%OUT%)%,Lib)%)%)%)%,%
+%slib,%(%else-then(%slib%,%(%else(%equal(EXE,%OUT%)%%equal(LIB,%OUT%)%,Lib)%)%)%)%,%
+%SLib,%(%else-then(%SLib%,%(%slib%)%)%)%,%
+%SLIB,%(%else-then(%SLIB%,%(%toupper(%SLib%)%)%)%)%,%
+%slib,%(%else-then(%_SLib%,%(%tolower(%SLib%)%)%)%)%,%
+%lib,%(%else-then(%lib%,%(%else(%equal(EXE,%OUT%)%%equal(SLIB,%OUT%)%,Lib)%)%)%)%,%
 %Lib,%(%else-then(%Lib%,%(%lib%)%)%)%,%
 %LIB,%(%else-then(%LIB%,%(%toupper(%Lib%)%)%)%)%,%
 %lib,%(%else-then(%_Lib%,%(%tolower(%Lib%)%)%)%)%,%
-%output,%(%else-then(%output%,%(%else(%Lib%%Slib%,Executable,Library)%)%)%)%,%
+%output,%(%else-then(%output%,%(%else(%Lib%%SLib%,Executable,%if(%SLib%,Shared )%Library)%)%)%)%,%
 %Output,%(%else-then(%Output%,%(%output%)%)%)%,%
 %OUTPUT,%(%else-then(%OUTPUT%,%(%toupper(%Output%)%)%)%)%,%
 %output,%(%else-then(%_Output%,%(%tolower(%Output%)%)%)%)%,%
-%target,%(%else-then(%target%,%(%lib%%Framework%)%)%)%,%
+%target,%(%else-then(%target%,%(%slib%%lib%%Framework%)%)%)%,%
 %Target,%(%else-then(%Target%,%(%target%)%)%)%,%
 %TARGET,%(%else-then(%TARGET%,%(%toupper(%Target%)%)%)%)%,%
 %target,%(%else-then(%_Target%,%(%tolower(%Target%)%)%)%)%,%
-%exe,%(%else-then(%exe%,%(%else(%Lib%,%(%if(%equal(%Target%,%Framework%)%,%(_exe)%)%)%)%)%)%)%,%
+%exe,%(%else-then(%exe%,%(%else(%SLib%%Lib%,%(%if(%equal(%Target%,%Framework%)%,%(_exe)%)%)%)%)%)%)%,%
 %Exe,%(%else-then(%Exe%,%(%exe%)%)%)%,%
 %EXE,%(%else-then(%EXE%,%(%toupper(%Exe%)%)%)%)%,%
 %exe,%(%else-then(%_Exe%,%(%tolower(%Exe%)%)%)%)%,%

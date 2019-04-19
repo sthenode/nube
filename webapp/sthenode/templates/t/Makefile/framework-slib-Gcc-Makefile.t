@@ -19,6 +19,14 @@
 %#   Date: 8/30/2017
 %########################################################################
 %with(%
+%filepath,%(%else-then(%filepath%,%(%filepath(%input%)%)%)%)%,%
+%Filepath,%(%else-then(%Filepath%,%(%filepath%)%)%)%,%
+%FILEPATH,%(%else-then(%FILEPATH%,%(%toupper(%Filepath%)%)%)%)%,%
+%filepath,%(%else-then(%_Filepath%,%(%tolower(%Filepath%)%)%)%)%,%
+%out,%(%else-then(%out%,%(SLib)%)%)%,%
+%Out,%(%else-then(%Out%,%(%out%)%)%)%,%
+%OUT,%(%else-then(%OUT%,%(%toupper(%Out%)%)%)%)%,%
+%out,%(%else-then(%_Out%,%(%tolower(%Out%)%)%)%)%,%
 %%(%
-%)%)%        
-
+%%include(%Filepath%/framework-target-Gcc-Makefile.t)%%
+%)%)%

@@ -13,16 +13,17 @@
 %# or otherwise) arising in any way out of the use of this software, 
 %# even if advised of the possibility of such damage.
 %#
-%#   File: cpp.t
+%#   File: framework-slib-QtCreator-pri.t
 %#
 %# Author: $author$
-%#   Date: 4/13/2018
+%#   Date: 12/26/2018
 %########################################################################
 %with(%
+%include_path,%(%else-then(%include_path%,%(%filepath(%input%)%)%)%)%,%
+%out,%(%else-then(%out%,%(SLib)%)%)%,%
+%Out,%(%else-then(%Out%,%(%out%)%)%)%,%
+%OUT,%(%else-then(%OUT%,%(%toupper(%Out%)%)%)%)%,%
+%out,%(%else-then(%_Out%,%(%tolower(%Out%)%)%)%)%,%
 %%(%
-%%include(%filepath(%input%)%/%Vendor%file-hpp-cpp.t)%%
-%#include "%Include_directory%/%Base%.%Header%"
-
-%Namespace_begin%%Namespace_end%%
-%
+%%include(%include_path%/framework-target-QtCreator-pri.t)%%
 %)%)%

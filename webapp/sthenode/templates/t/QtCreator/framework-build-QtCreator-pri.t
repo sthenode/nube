@@ -90,24 +90,28 @@
 %%with(%
 %%(%
 %########################################################################
-# %Depends%
+# %Depend%
 #
-# pkg-config --cflags --libs %Depends%
+# pkg-config --cflags --libs %Depend%
 #
 
-# build %Depends% INCLUDEPATH
+# build %Depend% INCLUDEPATH
 #
-build_%Depends%_INCLUDEPATH += \
+build_%Depend%_INCLUDEPATH += \
 
-# build %Depends% DEFINES
+# build %Depend% DEFINES
 #
-build_%Depends%_DEFINES += \
+build_%Depend%_DEFINES += \
 
-# build %Depends% LIBS
+# build %Depend% FRAMEWORKS
 #
-build_%Depends%_LIBS += \
+build_%Depend%_FRAMEWORKS += \
 
-)%)%)%,Depends)%%
+# build %Depend% LIBS
+#
+build_%Depend%_LIBS += \
+
+)%)%)%,Depend)%%
 %########################################################################
 # %Framework%
 
@@ -125,6 +129,14 @@ build_%Framework%_DEFINES += \
 %parse(%Depends%,;,,,,%(%
 %%with(%
 %%($${build_%Depends%_DEFINES} \
+)%)%)%,Depends)%
+
+# build %Framework% FRAMEWORKS
+#
+build_%Framework%_FRAMEWORKS += \
+%reverse-parse(%Depends%,;,,,,%(%
+%%with(%
+%%($${build_%Depends%_FRAMEWORKS} \
 )%)%)%,Depends)%
 
 # build %Framework% LIBS

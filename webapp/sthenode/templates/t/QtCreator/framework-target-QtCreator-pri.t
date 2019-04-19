@@ -75,7 +75,11 @@
 %Lib,%(%else-then(%Lib%,%(%lib%)%)%)%,%
 %LIB,%(%else-then(%LIB%,%(%toupper(%Lib%)%)%)%)%,%
 %lib,%(%else-then(%_Lib%,%(%tolower(%Lib%)%)%)%)%,%
-%exe,%(%else-then(%exe%,%(%if(%HasExe%%equal(%Target%,%Framework%)%,%(%else(%lib%,_exe)%)%)%)%)%)%,%
+%slib,%(%else-then(%slib%,%(%equal(SLib,%Out%)%)%)%)%,%
+%SLib,%(%else-then(%SLib%,%(%slib%)%)%)%,%
+%SLIB,%(%else-then(%SLIB%,%(%toupper(%SLib%)%)%)%)%,%
+%slib,%(%else-then(%_SLib%,%(%tolower(%SLib%)%)%)%)%,%
+%exe,%(%else-then(%exe%,%(%if(%HasExe%%equal(%Target%,%Framework%)%,%(%else(%lib%%slib%,_exe)%)%)%)%)%)%,%
 %Exe,%(%else-then(%Exe%,%(%exe%)%)%)%,%
 %EXE,%(%else-then(%EXE%,%(%toupper(%Exe%)%)%)%)%,%
 %exe,%(%else-then(%_Exe%,%(%tolower(%Exe%)%)%)%)%,%
@@ -108,9 +112,9 @@
 # %lib%%Target%%exe% TARGET
 #
 %lib%%Target%%exe%_TARGET = %Target%%
-%%if(%Lib%,%(
-%lib%%Target%%exe%_TEMPLATE = lib
-%lib%%Target%%exe%_CONFIG += staticlib)%)%
+%%if(%Lib%%SLib%,%(
+%lib%%Target%%exe%_TEMPLATE = lib%if(%Lib%,%(
+%lib%%Target%%exe%_CONFIG += staticlib)%)%)%)%
 
 # %lib%%Target%%exe% INCLUDEPATH
 #

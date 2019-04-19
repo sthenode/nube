@@ -13,23 +13,38 @@
 %# or otherwise) arising in any way out of the use of this software, 
 %# even if advised of the possibility of such damage.
 %#
-%#   File: hpp.t
+%#   File: xos-class-hpp.t
 %#
 %# Author: $author$
-%#   Date: 4/13/2018
+%#   Date: 7/27/2018
 %########################################################################
 %with(%
+%is_derived,%(%else-then(%if-no(%is_derived%,,%is_derived%)%,%(%if-no(%is_derived%,,%Implements%%Extends%)%)%)%)%,%
+%both,%(%else-then(%both%,%(%and(%Implements%,%Extends%)%)%)%)%,%
 %%(%
-%%include(%filepath(%input%)%/%Vendor%file-hpp-cpp.t)%%
+%%include(%filepath(%input%)%/xos-file-hpp-cpp.t)%%
 %#ifndef %IFNDEF_DIRECTORY%_%BASE%_%EXTENSION%
 #define %IFNDEF_DIRECTORY%_%BASE%_%EXTENSION%
 
 %if-then(%parse(%Include%,%(,)%,,,,%(#include "%Include%"
 )%,Include)%%parse(%Sys_include%,%(,)%,,,,%(#include <%Include%>
 )%,Include)%,
-)%%
-%%if-then(%Namespace_begin%%Namespace_end%,
-)%%
-%#endif %CCComment% %IFNDEF_DIRECTORY%_%BASE%_%EXTENSION% 
+)%%Namespace_begin%%if(%Implements%,%(typedef %Implements_base% %Implements%;
+)%)%%if(%Extends%,%(typedef %Extends_base% %Extends%;
+)%)%///////////////////////////////////////////////////////////////////////
+//  Class: %Name%
+///////////////////////////////////////////////////////////////////////
+class %EXPORT_CLASS%%Name%%if(%is_derived%,%(: %if(%Implements%,virtual public %Implements%)%%if(%both%,%(,)% )%%if(%Extends%,public %Extends%)%)%)% {
+public:%if(%Implements%,
+    typedef %Implements% implements;)%%if(%Extends%,
+    typedef %Extends% extends;)%%if(%is_constructor%%is_destructor%,
+)%%if(%is_constructor%,
+    %Constructor%%Name%%(()%%())% {
+    })%%if(%is_destructor%,
+    %Destructor%~%Name%%(()%%())% {
+    })%
+}; %CCComment% class %EXPORT_CLASS%%Name%
+%Namespace_end%
+#endif %CCComment% %IFNDEF_DIRECTORY%_%BASE%_%EXTENSION% 
 %
 %)%)%

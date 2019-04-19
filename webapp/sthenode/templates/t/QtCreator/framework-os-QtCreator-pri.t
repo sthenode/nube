@@ -90,8 +90,12 @@
 contains(UNAME,Darwin) {
 %FRAMEWORK%_OS = macosx
 } else {
+contains(UNAME,Linux) {
 %FRAMEWORK%_OS = linux
-}
+} else {
+%FRAMEWORK%_OS = windows
+} # contains(UNAME,Linux)
+} # contains(UNAME,Darwin)
 )%,%(%FRAMEWORK%_OS = %os%)%)%
 #CONFIG += c++11
 #CONFIG += c++0x
@@ -102,17 +106,17 @@ contains(UNAME,Darwin) {
 %%(########################################################################
 # %Depends%
 %DEPENDS%_THIRDPARTY_PKG_MAKE_BLD = $${%DEPENDS%_THIRDPARTY_PKG}/build/$${%FRAMEWORK%_OS}/$${BUILD_CONFIG}
-%DEPENDS%_THIRDPARTY_PRJ_MAKE_BLD = $${%DEPENDS%_THIRDPARTY_PRJ}/build/$${%FRAMEWORK%_OS}/$${BUILD_CONFIG}
+%DEPENDS%_THIRDPARTY_PRJ_MAKE_BLD = $${OTHER_BLD}/$${%DEPENDS%_THIRDPARTY_PRJ}/build/$${%FRAMEWORK%_OS}/$${BUILD_CONFIG}
 %DEPENDS%_THIRDPARTY_PKG_BLD = $${%DEPENDS%_THIRDPARTY_PKG}/build/$${%FRAMEWORK%_OS}/QtCreator/$${BUILD_CONFIG}
-%DEPENDS%_THIRDPARTY_PRJ_BLD = $${%DEPENDS%_THIRDPARTY_PRJ}/build/$${%FRAMEWORK%_OS}/QtCreator/$${BUILD_CONFIG}
+%DEPENDS%_THIRDPARTY_PRJ_BLD = $${OTHER_BLD}/$${%DEPENDS%_THIRDPARTY_PRJ}/build/$${%FRAMEWORK%_OS}/QtCreator/$${BUILD_CONFIG}
 %DEPENDS%_PKG_BLD = $${OTHER_BLD}/$${%DEPENDS%_PKG}/build/$${%FRAMEWORK%_OS}/QtCreator/$${BUILD_CONFIG}
 %DEPENDS%_PRJ_BLD = $${OTHER_BLD}/$${%DEPENDS%_PRJ}/build/$${%FRAMEWORK%_OS}/QtCreator/$${BUILD_CONFIG}
 #%DEPENDS%_LIB = $${%DEPENDS%_THIRDPARTY_PKG_MAKE_BLD}/lib
 #%DEPENDS%_LIB = $${%DEPENDS%_THIRDPARTY_PRJ_MAKE_BLD}/lib
 #%DEPENDS%_LIB = $${%DEPENDS%_THIRDPARTY_PKG_BLD}/lib
 #%DEPENDS%_LIB = $${%DEPENDS%_THIRDPARTY_PRJ_BLD}/lib
-#%DEPENDS%_LIB = $${%DEPENDS%_PKG_BLD}/lib
-%DEPENDS%_LIB = $${%DEPENDS%_PRJ_BLD}/lib
+%DEPENDS%_LIB = $${%DEPENDS%_PKG_BLD}/lib
+#%DEPENDS%_LIB = $${%DEPENDS%_PRJ_BLD}/lib
 #%DEPENDS%_LIB = $${%FRAMEWORK%_LIB}
 
 # %Depends% LIBS
@@ -143,14 +147,22 @@ contains(UNAME,Darwin) {
 )%)%%
 %)%,Depends)%%
 %$${build_%Framework%_LIBS} \
--lpthread \
--ldl \
 %if-no(%IsOs%,%(
+contains(%FRAMEWORK%_OS,macosx|linux) {
+%Framework%_LIBS += \
+-lpthread \
+-ldl
+} else {
+} # contains(%FRAMEWORK%_OS,macosx|linux)
+
 contains(%FRAMEWORK%_OS,linux) {
 %Framework%_LIBS += \
 -lrt
 } else {
-})%,%(%else(%equal(macosx,%os%)%,-lrt)%)%)%
+} # contains(%FRAMEWORK%_OS,linux)
+)%,%(%else(,%(-lpthread \
+-ldl \
+)%)%%else(%equal(macosx,%os%)%%equal(windows,%os%)%,-lrt)%)%)%
 
 %
 %)%)%

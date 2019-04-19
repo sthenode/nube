@@ -75,7 +75,11 @@
 %Lib,%(%else-then(%Lib%,%(%lib%)%)%)%,%
 %LIB,%(%else-then(%LIB%,%(%toupper(%Lib%)%)%)%)%,%
 %lib,%(%else-then(%_Lib%,%(%tolower(%Lib%)%)%)%)%,%
-%exe,%(%else-then(%exe%,%(%if(%HasExe%%equal(%Target%,%Framework%)%,%(%else(%lib%,_exe)%)%)%)%)%)%,%
+%slib,%(%else-then(%slib%,%(%equal(SLib,%Out%)%)%)%)%,%
+%SLib,%(%else-then(%SLib%,%(%slib%)%)%)%,%
+%SLIB,%(%else-then(%SLIB%,%(%toupper(%SLib%)%)%)%)%,%
+%slib,%(%else-then(%_SLib%,%(%tolower(%SLib%)%)%)%)%,%
+%exe,%(%else-then(%exe%,%(%if(%HasExe%%equal(%Target%,%Framework%)%,%(%else(%lib%%slib%,_exe)%)%)%)%)%)%,%
 %Exe,%(%else-then(%Exe%,%(%exe%)%)%)%,%
 %EXE,%(%else-then(%EXE%,%(%toupper(%Exe%)%)%)%)%,%
 %exe,%(%else-then(%_Exe%,%(%tolower(%Exe%)%)%)%)%,%
@@ -107,9 +111,9 @@ include(../../%Framework%.pri)
 include(../../../../QtCreator/%out%/%lib%%Target%/%lib%%Target%.pri)
 
 TARGET = $${%lib%%Target%%exe%_TARGET}%
-%%if(%Lib%,%(
-TEMPLATE = $${%lib%%Target%_TEMPLATE}
-CONFIG += $${%lib%%Target%_CONFIG})%)%
+%%if(%Lib%%SLib%,%(
+TEMPLATE = $${%lib%%Target%_TEMPLATE}%if(%Lib%,%(
+CONFIG += $${%lib%%Target%_CONFIG})%)%)%)%
 
 ########################################################################
 # INCLUDEPATH
@@ -130,7 +134,7 @@ $${%lib%%Target%%exe%_OBJECTIVE_HEADERS} \
 
 # OBJECTIVE_SOURCES
 #
-SOURCES += \
+OBJECTIVE_SOURCES += \
 $${%lib%%Target%%exe%_OBJECTIVE_SOURCES} \
 
 ########################################################################
@@ -138,12 +142,12 @@ $${%lib%%Target%%exe%_OBJECTIVE_SOURCES} \
 #
 HEADERS += \
 $${%lib%%Target%%exe%_HEADERS} \
+$${OBJECTIVE_HEADERS} \
 
 # SOURCES
 #
 SOURCES += \
 $${%lib%%Target%%exe%_SOURCES} \
-$${OBJECTIVE_SOURCES} \
 
 ########################################################################
 %else(%lib%,%(# FRAMEWORKS

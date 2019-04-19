@@ -23,7 +23,7 @@
 %Filepath,%(%else-then(%Filepath%,%(%filepath%)%)%)%,%
 %FILEPATH,%(%else-then(%FILEPATH%,%(%toupper(%Filepath%)%)%)%)%,%
 %filepath,%(%else-then(%_Filepath%,%(%tolower(%Filepath%)%)%)%)%,%
-%file,%(%else-then(%file%,%(config)%)%)%,%
+%file,%(%else-then(%file%,%(configure)%)%)%,%
 %File,%(%else-then(%File%,%(%file%)%)%)%,%
 %FILE,%(%else-then(%FILE%,%(%toupper(%File%)%)%)%)%,%
 %file,%(%else-then(%_File%,%(%tolower(%File%)%)%)%)%,%

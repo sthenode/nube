@@ -1,5 +1,5 @@
 %########################################################################
-%# Copyright (c) 1988-2018 $organization$
+%# Copyright (c) 1988-2019 $organization$
 %#
 %# This software is provided by the author and contributors ``as is'' 
 %# and any express or implied warranties, including, but not limited to, 
@@ -13,16 +13,20 @@
 %# or otherwise) arising in any way out of the use of this software, 
 %# even if advised of the possibility of such damage.
 %#
-%#   File: cpp.t
+%#   File: framework-os-slib-Gcc-Makefile.t
 %#
 %# Author: $author$
-%#   Date: 4/13/2018
+%#   Date: 4/6/2019
 %########################################################################
 %with(%
+%filepath,%(%else-then(%filepath%,%(%filepath(%input%)%)%)%)%,%
+%Filepath,%(%else-then(%Filepath%,%(%filepath%)%)%)%,%
+%FILEPATH,%(%else-then(%FILEPATH%,%(%toupper(%Filepath%)%)%)%)%,%
+%filepath,%(%else-then(%_Filepath%,%(%tolower(%Filepath%)%)%)%)%,%
+%out,%(%else-then(%out%,%(SLib)%)%)%,%
+%Out,%(%else-then(%Out%,%(%out%)%)%)%,%
+%OUT,%(%else-then(%OUT%,%(%toupper(%Out%)%)%)%)%,%
+%out,%(%else-then(%_Out%,%(%tolower(%Out%)%)%)%)%,%
 %%(%
-%%include(%filepath(%input%)%/%Vendor%file-hpp-cpp.t)%%
-%#include "%Include_directory%/%Base%.%Header%"
-
-%Namespace_begin%%Namespace_end%%
-%
+%%include(%Filepath%/framework-os-target-Gcc-Makefile.t)%%
 %)%)%

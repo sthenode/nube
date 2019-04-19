@@ -59,7 +59,7 @@
 %Os,%(%else-then(%Os%,%(%os%)%)%)%,%
 %OS,%(%else-then(%OS%,%(%toupper(%Os%)%)%)%)%,%
 %os,%(%else-then(%_Os%,%(%tolower(%Os%)%)%)%)%,%
-%makefile,%(%else-then(%makefile%,%(Makefile)%)%)%,%
+%makefile,%(%else-then(%makefile%,%(project .pri file)%)%)%,%
 %Makefile,%(%else-then(%Makefile%,%(%makefile%)%)%)%,%
 %MAKEFILE,%(%else-then(%MAKEFILE%,%(%toupper(%Makefile%)%)%)%)%,%
 %makefile,%(%else-then(%_Makefile%,%(%tolower(%Makefile%)%)%)%)%,%
@@ -71,7 +71,7 @@
 %File,%(%else-then(%File%,%(%file%)%)%)%,%
 %FILE,%(%else-then(%FILE%,%(%toupper(%File%)%)%)%)%,%
 %file,%(%else-then(%_File%,%(%tolower(%File%)%)%)%)%,%
-%title,%(%else-then(%title%,%(%if-then(%Os%, )%Gcc %Makefile%%then-if(%Framework%%then-if(%Target%, )%, for )%)%)%)%,%
+%title,%(%else-then(%title%,%(%if-then(%Os%, )%%if-then(%Which%, )%QtCreator %Makefile%%then-if(%Framework%%then-if(%Target%, )%, for )%)%)%)%,%
 %Title,%(%else-then(%Title%,%(%title%)%)%)%,%
 %TITLE,%(%else-then(%TITLE%,%(%toupper(%Title%)%)%)%)%,%
 %title,%(%else-then(%_Title%,%(%tolower(%Title%)%)%)%)%,%

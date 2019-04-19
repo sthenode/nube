@@ -94,8 +94,8 @@
 %%(%
 %%include(%Filepath%/QtCreator-file.t)%%
 %
-OTHER_PKG = ../../../../../../..
-OTHER_PRJ = ../../../../../..
+OTHER_PKG = ../../../../../..
+OTHER_PRJ = ../../../../..
 OTHER_BLD = ..
 
 THIRDPARTY_NAME = thirdparty
@@ -132,14 +132,11 @@ THIRDPARTY_SRC = $${OTHER_PRJ}/src/$${THIRDPARTY_NAME}
 #%DEPENDS%_SRC = $${%DEPENDS%_THIRDPARTY_SRC_DIR}
 #%DEPENDS%_SRC = $${%DEPENDS%_THIRDPARTY_PKG}/$${%DEPENDS%_SOURCE}
 #%DEPENDS%_SRC = $${%DEPENDS%_THIRDPARTY_PRJ}/$${%DEPENDS%_SOURCE}
-#%DEPENDS%_SRC = $${%DEPENDS%_PKG}/$${%DEPENDS%_SOURCE}
-%DEPENDS%_SRC = $${%DEPENDS%_PRJ}/$${%DEPENDS%_SOURCE}
+%DEPENDS%_SRC = $${%DEPENDS%_PKG}/$${%DEPENDS%_SOURCE}
+#%DEPENDS%_SRC = $${%DEPENDS%_PRJ}/$${%DEPENDS%_SOURCE}
 
 # %Depends% INCLUDEPATH
 #
-#%Depends%_INCLUDEPATH += \
-#$${%DEPENDS%_HOME_BUILD_INCLUDE} \
-
 %Depends%_INCLUDEPATH += \
 $${%DEPENDS%_SRC} \
 
@@ -152,8 +149,8 @@ $${%DEPENDS%_SRC} \
 
 ########################################################################
 # %Framework%
-FRAMEWORK_NAME = %Framework%
-FRAMEWORK_SOURCE = src
+%FRAMEWORK%_NAME = %Framework%
+%FRAMEWORK%_SOURCE = src
 
 %FRAMEWORK%_PKG = ../../../../..
 %FRAMEWORK%_BLD = ../..
@@ -161,7 +158,7 @@ FRAMEWORK_SOURCE = src
 %FRAMEWORK%_PRJ = $${%FRAMEWORK%_PKG}
 %FRAMEWORK%_BIN = $${%FRAMEWORK%_BLD}/bin
 %FRAMEWORK%_LIB = $${%FRAMEWORK%_BLD}/lib
-%FRAMEWORK%_SRC = $${%FRAMEWORK%_PKG}/$${FRAMEWORK_SOURCE}
+%FRAMEWORK%_SRC = $${%FRAMEWORK%_PKG}/$${%FRAMEWORK%_SOURCE}
 
 # %Framework% BUILD_CONFIG
 #
@@ -199,8 +196,8 @@ $${%FRAMEWORK%_SRC} \
 # %Framework% LIBS
 #
 %Framework%_LIBS += \
--L$${%FRAMEWORK%_LIB}/lib$${FRAMEWORK_NAME} \
--l$${FRAMEWORK_NAME} \
+-L$${%FRAMEWORK%_LIB}/lib$${%FRAMEWORK%_NAME} \
+-l$${%FRAMEWORK%_NAME} \
 
 %
 %)%)%

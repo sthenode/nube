@@ -13,16 +13,12 @@
 %# or otherwise) arising in any way out of the use of this software, 
 %# even if advised of the possibility of such damage.
 %#
-%#   File: cpp.t
+%#   File: xos-hpp.t
 %#
 %# Author: $author$
-%#   Date: 4/13/2018
+%#   Date: 7/27/2018
 %########################################################################
 %with(%
 %%(%
-%%include(%filepath(%input%)%/%Vendor%file-hpp-cpp.t)%%
-%#include "%Include_directory%/%Base%.%Header%"
-
-%Namespace_begin%%Namespace_end%%
-%
+%%include(%filepath(%input%)%/%Prefix%%Extension%.t)%%
 %)%)%

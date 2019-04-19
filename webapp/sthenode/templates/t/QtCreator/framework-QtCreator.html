@@ -27,16 +27,14 @@
         <!--========================================================================-->
         <!-- style                                                                  -->
         <!--========================================================================-->
-        <style
-         type="text/css">
+        <link rel="stylesheet" type="text/css" href="../css/html-form.css"></link>
+        <style type="text/css">
         </style>
         <!--========================================================================-->
         <!-- script                                                                 -->
         <!--========================================================================-->
-        <script language="javaScript" src="../../js/html-form.js"></script>
-        <script
-         language="JavaScript"
-         type="text/JavaScript">
+        <script type="text/javascript" src="../js/html-form.js"></script>
+        <script type="text/javascript">
         </script>
     </head>
     <!--========================================================================-->
@@ -44,15 +42,14 @@
     <!--========================================================================-->
     <body>
         <a href="framework-QtCreator.html"><b>Create Framework QtCreator Project</b></a>
-        <hr>
         <!--========================================================================-->
         <!-- form                                                                   -->
         <!--========================================================================-->
         <form
-         Action="form-html.t"
-         Method="POST"
-         Name="Form"
+         Action="http://localhost/sthenode/templates/t/QtCreator/framework-QtCreator-pri.t"
+         Method="POST" Name="Form"
          onSubmit="return setFormSubmit(getFormValue2('Template','FormAction','Form'),getFormValue('FormMethod','Form'),'Form')">
+         <div class="form"><hr/>
             File: <input name="File" value=""/> [Framework.pri | Framework.pro]<br/>
             </br>
 
@@ -68,15 +65,22 @@
             Style: <input name="Style" value=""/> [xos] <input type="checkbox" name="IsStyle" value="no" checked="yes"/>no<br/>
             Language: <input name="Language" value=""/> [cpp] <input type="checkbox" name="IsLanguage" value="no" checked="yes"/>no<br/>
             Template: <select name="Template">
-            <option value="framework-QtCreator-pri.t">QtCreator.pri</option>
-            <option value="framework-os-QtCreator-pri.t">Os-QtCreator.pri</option>
-            <option value="framework-build-QtCreator-pri.t">Build-QtCreator.pri</option>
+            <option value="http://localhost/sthenode/templates/t/QtCreator/framework-QtCreator-pri.t">QtCreator.pri</option>
+            <option value="http://localhost/sthenode/templates/t/QtCreator/framework-os-QtCreator-pri.t">Os-QtCreator.pri</option>
+            <option value="http://localhost/sthenode/templates/t/QtCreator/framework-build-QtCreator-pri.t">Build-QtCreator.pri</option>
+            <option value="http://localhost/sthenode/templates/t/QtCreator/framework-build-depend-QtCreator-pri.t">Build-Depend-QtCreator.pri</option>
+            <option value="http://localhost/sthenode/templates/t/QtCreator/framework-depend-QtCreator-pri.t">Depend-QtCreator.pri</option>
             <option value=""/>
-            <option value="framework-lib-QtCreator-pri.t">Library-QtCreator.pri</option>
-            <option value="framework-os-lib-QtCreator-pro.t">Os-Library-QtCreator.pro</option>
+            <option value="http://localhost/sthenode/templates/t/QtCreator/framework-lib-QtCreator-pri.t">Library-QtCreator.pri</option>
+            <option value="http://localhost/sthenode/templates/t/QtCreator/framework-os-lib-QtCreator-pro.t">Os-Library-QtCreator.pro</option>
             <option value=""/>
-            <option value="framework-app-QtCreator-pri.t">Executable-QtCreator.pri</option>
-            <option value="framework-os-app-QtCreator-pro.t">Os-Executable-QtCreator.pro</option>
+            <option value="http://localhost/sthenode/templates/t/QtCreator/framework-app-QtCreator-pri.t">Executable-QtCreator.pri</option>
+            <option value="http://localhost/sthenode/templates/t/QtCreator/framework-os-app-QtCreator-pro.t">Os-Executable-QtCreator.pro</option>
+            <option value=""/>
+            <option value="http://localhost/sthenode/templates/t/QtCreator/framework-slib-QtCreator-pri.t">Shared-Library-QtCreator.pri</option>
+            <option value="http://localhost/sthenode/templates/t/QtCreator/framework-os-slib-QtCreator-pro.t">Os-Shared-Library-QtCreator.pro</option>
+            <option value=""/>
+            <option value="http://localhost/sthenode-cgi/cgi">cgi parameters</option>
             </select><br/>
             <br/>
 
@@ -85,21 +89,43 @@
             Date: <input name="Date" value=""/><br/>
             <br/>
 
-            Action: <input name="FormAction" value="framework-QtCreator-pri.t"/><br/>
-            Method: <input name="FormMethod" value="POST"/><br/>
-            <input type="hidden" name="Name" value="Form"/>
-            <input type="hidden" name="onSublit" value="return setFormSubmit(getFormValue('%Name%Action','%Name%'),getFormValue('%Name%Method','%Name%'),'%Name%')"/>
-            <br/>
+            Content-Type: <select name="content_type">
+            <option value="text/plain">text</option>
+            <option value="text/html">html</option>
+            <option value="text/xml">xml</option>
+            <option value="application/json">json</option>
+            <option value="application/javascript">javascript</option>
+            <option value=""></option>
+            </select><br/>
+            Action: <select name="FormAction">
+            <option value="http://localhost/sthenode/templates/t/QtCreator/framework-QtCreator-pri.t">framework-QtCreator-pri.t</option>
+            <option value="http://localhost/sthenode-cgi/cgi">cgi parameters</option>
+            <option value=""></option>
+            </select><br/>
+            Method: <select name="FormMethod">
+            <option value="POST">POST</option>
+            <option value="GET">GET</option>
+            <option value=""></option>
+            </select><br/><br/>
+
             <input type="submit" name="submit" value="submit"/><br/>
+        <hr/></div>
         </form>
-        <hr/>
         <table><tr>
-        <td><a href="../Makefile/framework-Gcc-Makefile.html">
-        <b>Create Framework Gcc Makefile<b></a></td>
-        <td width="20"/>
-        <td><a href="../cpp/class-hpp-cpp.html"><b>Create C++ Class<b></a></td>
-        <td width="20"/>
-        <td><a href="../../../../../.."><b>/frameworks/<b></a></td>
+            <td><a href="../Makefile/framework-Gcc-Makefile.html">
+            <b>Create Framework Gcc Makefile<b></a></td>
+            <td width="20"/>
+
+            <td><a href="../cpp/class-hpp-cpp.html"><b>Create C++ Class<b></a></td>
+            <td width="20"/>
+
+            <td><a href="../html/form-html.html"><b>Create HTML Form<b></a></td>
+            <td width="20"/>
+
+            <td><a href="../html/html.html"><b>Create HTML File<b></a></td>
+            <td width="20"/>
+
+            <td><a href="../../../../../.."><b>/sthenode/<b></a></td>
         </tr></table>
     </body>
 </html>

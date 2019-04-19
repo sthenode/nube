@@ -1,5 +1,5 @@
 %########################################################################
-%# Copyright (c) 1988-2018 $organization$
+%# Copyright (c) 1988-2019 $organization$
 %#
 %# This software is provided by the author and contributors ``as is'' 
 %# and any express or implied warranties, including, but not limited to, 
@@ -13,16 +13,17 @@
 %# or otherwise) arising in any way out of the use of this software, 
 %# even if advised of the possibility of such damage.
 %#
-%#   File: cpp.t
+%#   File: t.t
 %#
 %# Author: $author$
-%#   Date: 4/13/2018
+%#   Date: 2/5/2019
 %########################################################################
 %with(%
+%include_path,%(%else-then(%include_path%,%(%filepath(%input%)%)%)%)%,%
 %%(%
-%%include(%filepath(%input%)%/%Vendor%file-hpp-cpp.t)%%
-%#include "%Include_directory%/%Base%.%Header%"
-
-%Namespace_begin%%Namespace_end%%
-%
-%)%)%
+%%include(%include_path%/file-t.t)%%
+%%%with%(()%%%
+%%include_path,%%%(()%%%else-then%(()%%%include_path%%,%%%(()%%%filepath%(()%%%input%%%())%%%%())%%%%())%%%%())%%%%(,)%%%
+%include(%include_path%/parameters-t.t)%%%%%%(()%%%
+%%%%include%(()%%%include_path%%%())%%%%%
+%%%())%%%%())%%%)%)%

@@ -52,54 +52,54 @@
 )%,Include)%,
 )%%
 %%Namespace_begin%%
-%%if-no(%is_name%,,%(%if(%Extends%,%(%if(%Implements%,%(typedef implement_base %Implements%t_implements;
+%%if-no(%is_name%,,%(%if(%Extends%,%(%if(%Name_implements%,%(typedef implement_base %Implementst%_implements;
 ///////////////////////////////////////////////////////////////////////
-///  Class: %Implements%t
+///  Class: %Implementst%
 ///////////////////////////////////////////////////////////////////////
-template <class TImplements = %Implements%t_implements>
-class _EXPORT_CLASS %Implements%t: virtual public TImplements {
+%if-no(%is_template%,,%(template <class TImplements = %Implementst%_implements>
+)%)%class _EXPORT_CLASS %Implementst%: virtual public %if-no(%is_template%,%Implementst%_implements,TImplements)% {
 public:
-    typedef TImplements implements;
-};
-typedef %Implements%t<> %Implements%;
-
-)%)%%if(%Implements%,%(typedef %Implements% %Name%t_implements;
-)%)%typedef %Extends% %Name%t_extends;
+    typedef %if-no(%is_template%,%Implementst%_implements,TImplements)% implements;
+}; /// class _EXPORT_CLASS %Implementst%
+%if-no(%is_template%,,%(typedef %Implementst%<> %Implements%;
+)%)%
+)%)%%if(%Implements%,%(typedef %Implements% %Namet%_implements;
+)%)%typedef %Extends% %Namet%_extends;
 ///////////////////////////////////////////////////////////////////////
-///  Class: %Name%t
+///  Class: %Namet%
 ///////////////////////////////////////////////////////////////////////
-template <%if(%Implements%,%(class TImplements = %Name%t_implements, )%)%class TExtends = %Name%t_extends>
-class _EXPORT_CLASS %Name%t: %if(%Implements%,%(virtual public TImplements, )%)%public TExtends {
+%if-no(%is_template%,,%(template <%if(%Implements%,%(class TImplements = %Namet%_implements, )%)%class TExtends = %Namet%_extends>
+)%)%class _EXPORT_CLASS %Namet%: %if(%Implements%,%(virtual public %if-no(%is_template%,%Namet%_implements,TImplements)%, )%)%public %if-no(%is_template%,%Namet%_extends,TExtends)% {
 public:
-    %if(%Implements%,%(typedef TImplements implements;
-    )%)%typedef TExtends extends;
+    %if(%Implements%,%(typedef %if-no(%is_template%,%Namet%_implements,TImplements)% implements;
+    )%)%typedef %if-no(%is_template%,%Namet%_extends,TExtends)% extends;
 
-    %Name%t(const %Name%t &copy) {
+    %Namet%(const %Namet% &copy) {
     }
-    %Name%t() {
+    %Namet%() {
     }
-    virtual ~%Name%t() {
+    virtual ~%Namet%() {
     }
-};
-typedef %Name%t<> %Name%;
-)%,%(%if(%Implements%,%(typedef %Implements% %Name%t_implements;
+}; /// class _EXPORT_CLASS %Namet%
+%if-no(%is_template%,,%(typedef %Namet%<> %Name%;
+)%)%)%,%(%if(%Implements%,%(typedef %Implements% %Namet%_implements;
 ///////////////////////////////////////////////////////////////////////
-///  Class: %Name%t
+///  Class: %Namet%
 ///////////////////////////////////////////////////////////////////////
-template <class TImplements = %Name%t_implements>
-class _EXPORT_CLASS %Name%t: virtual public TImplements {
+%if-no(%is_template%,,template <class TImplements = %Namet%_implements>
+)%class _EXPORT_CLASS %Namet%: virtual public %if-no(%is_template%,%Namet%_implements,TImplements)% {
 public:
-    typedef TImplements implements;
+    typedef %if-no(%is_template%,%Namet%_implements,TImplements)% implements;
 
-    %Name%t(const %Name%t &copy) {
+    %Namet%(const %Namet% &copy) {
     }
-    %Name%t() {
+    %Namet%() {
     }
-    virtual ~%Name%t() {
+    virtual ~%Namet%() {
     }
-};
-typedef %Name%t<> %Name%;
-)%,%(///////////////////////////////////////////////////////////////////////
+}; /// class _EXPORT_CLASS %Namet%
+%if-no(%is_template%,,typedef %Namet%<> %Name%;
+)%)%,%(///////////////////////////////////////////////////////////////////////
 ///  Class: %Name%
 ///////////////////////////////////////////////////////////////////////
 class _EXPORT_CLASS %Name% {
@@ -110,7 +110,7 @@ public:
     }
     virtual ~%Name%() {
     }
-};
+}; /// class _EXPORT_CLASS %Name%
 )%)%)%)%)%)%%Namespace_end%
 #endif /// %IFNDEF_DIRECTORY%_%BASE%_%EXTENSION% 
 %
