@@ -20,9 +20,29 @@
 %########################################################################
 %with(%
 %include_path,%(%else-then(%include_path%,%(%filepath(%input%)%)%)%)%,%
+%organization,%(%else-then(%organization%,%($organization$)%)%)%,%
+%Organization,%(%else-then(%Organization%,%(%organization%)%)%)%,%
+%ORGANIZATION,%(%else-then(%ORGANIZATION%,%(%toupper(%Organization%)%)%)%)%,%
+%organization,%(%else-then(%_Organization%,%(%tolower(%Organization%)%)%)%)%,%
+%author,%(%else-then(%author%,%($author$)%)%)%,%
+%Author,%(%else-then(%Author%,%(%author%)%)%)%,%
+%AUTHOR,%(%else-then(%AUTHOR%,%(%toupper(%Author%)%)%)%)%,%
+%author,%(%else-then(%_Author%,%(%tolower(%Author%)%)%)%)%,%
+%file,%(%else-then(%file%,%(bash.sh)%)%)%,%
+%File,%(%else-then(%File%,%(%file%)%)%)%,%
+%FILE,%(%else-then(%FILE%,%(%toupper(%File%)%)%)%)%,%
+%file,%(%else-then(%_File%,%(%tolower(%File%)%)%)%)%,%
+%base,%(%else-then(%filebase(%File%)%,%(%File%)%)%)%,%
+%Base,%(%else-then(%Base%,%(%base%)%)%)%,%
+%BASE,%(%else-then(%BASE%,%(%toupper(%Base%)%)%)%)%,%
+%base,%(%else-then(%_Base%,%(%tolower(%Base%)%)%)%)%,%
+%extension,%(%else-then(%fileextension(%File%)%,%(sh)%)%)%,%
+%Extension,%(%else-then(%Extension%,%(%extension%)%)%)%,%
+%EXTENSION,%(%else-then(%EXTENSION%,%(%toupper(%Extension%)%)%)%)%,%
+%extension,%(%else-then(%_Extension%,%(%tolower(%Extension%)%)%)%)%,%
 %%(#!/bin/bash
-#
-# Copyright (c) 1988-%year()% $organization$
+########################################################################
+# Copyright (c) 1988-%year()% %Organization%
 #
 # This software is provided by the author and contributors ``as is''
 # and any express or implied warranties, including, but not limited to,
@@ -36,10 +56,15 @@
 # or otherwise) arising in any way out of the use of this software,
 # even if advised of the possibility of such damage.
 #
-#   File: %File%
+#   File: %Base%%then-if(%Extension%,.)%
 #
-# Author: $author$
+# Author: %Author%
 #   Date: %date()%
 #
+########################################################################
+if [ "$1" != "" ]; then
 echo usage `basename $0` 
+else
+echo usage `basename $0` 
+fi
 )%)%

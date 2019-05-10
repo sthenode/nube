@@ -24,6 +24,14 @@
 %Vendor,%(%if-then(%Vendor%,%(-)%)%)%,%
 %VENDOR,%(%else-then(%VENDOR%,%(%toupper(%Vendor%)%)%)%)%,%
 %vendor,%(%else-then(%_Vendor%,%(%tolower(%Vendor%)%)%)%)%,%
+%organization,%(%else-then(%organization%,%($organization$)%)%)%,%
+%Organization,%(%else-then(%Organization%,%(%organization%)%)%)%,%
+%ORGANIZATION,%(%else-then(%ORGANIZATION%,%(%toupper(%Organization%)%)%)%)%,%
+%organization,%(%else-then(%_Organization%,%(%tolower(%Organization%)%)%)%)%,%
+%author,%(%else-then(%author%,%($author$)%)%)%,%
+%Author,%(%else-then(%Author%,%(%author%)%)%)%,%
+%AUTHOR,%(%else-then(%AUTHOR%,%(%toupper(%Author%)%)%)%)%,%
+%author,%(%else-then(%_Author%,%(%tolower(%Author%)%)%)%)%,%
 %%(%
 %%include(%filepath(%input%)%/%Vendor%vendor-hpp-cpp.t)%%
 %)%)%

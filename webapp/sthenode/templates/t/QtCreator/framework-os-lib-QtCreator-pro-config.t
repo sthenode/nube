@@ -1,5 +1,5 @@
 %########################################################################
-%# Copyright (c) 1988-2018 $organization$
+%# Copyright (c) 1988-2019 $organization$
 %#
 %# This software is provided by the author and contributors ``as is'' 
 %# and any express or implied warranties, including, but not limited to, 
@@ -13,24 +13,25 @@
 %# or otherwise) arising in any way out of the use of this software, 
 %# even if advised of the possibility of such damage.
 %#
-%#   File: hxx.t
+%#   File: framework-os-lib-QtCreator-pro-config.t
 %#
 %# Author: $author$
-%#   Date: 4/13/2018
+%#   Date: 5/5/2019
 %########################################################################
 %with(%
 %include_path,%(%else-then(%include_path%,%(%filepath(%input%)%)%)%)%,%
-%%(%
-%%include(%include_path%/file-hxx-cxx.t)%%
-%#ifndef %IFNDEF_DIRECTORY%_%BASE%_%EXTENSION%
-#define %IFNDEF_DIRECTORY%_%BASE%_%EXTENSION%
-
-%if-then(%parse(%Include%,%(,)%,,,,%(#include "%Include%"
-)%,Include)%%parse(%Sys_include%,%(,)%,,,,%(#include <%Include%>
-)%,Include)%,
-)%%
-%%if-then(%CNamespace_begin%%CNamespace_end%,
-)%%
-%#endif /* %IFNDEF_DIRECTORY%_%BASE%_%EXTENSION% */
-%
-%)%)%
+%framework,%(%else-then(%framework%,%(framework)%)%)%,%
+%Framework,%(%else-then(%Framework%,%(%framework%)%)%)%,%
+%FRAMEWORK,%(%else-then(%FRAMEWORK%,%(%toupper(%Framework%)%)%)%)%,%
+%framework,%(%else-then(%_Framework%,%(%tolower(%Framework%)%)%)%)%,%
+%target,%(%else-then(%target%,%(%Framework%)%)%)%,%
+%Target,%(%else-then(%Target%,%(%target%)%)%)%,%
+%TARGET,%(%else-then(%TARGET%,%(%toupper(%Target%)%)%)%)%,%
+%target,%(%else-then(%_Target%,%(%tolower(%Target%)%)%)%)%,%
+%os,%(%else-then(%os%,%(os)%)%)%,%
+%Os,%(%else-then(%Os%,%(%else-then(%Os2%,%(%os%)%)%)%)%)%,%
+%OS,%(%else-then(%OS%,%(%toupper(%Os%)%)%)%)%,%
+%os,%(%else-then(%_Os%,%(%tolower(%Os%)%)%)%)%,%
+%%(%Framework%/build/%os%/QtCreator/Debug/lib/lib%Target%
+%Framework%/build/%os%/QtCreator/Release/lib/lib%Target%
+)%)%

@@ -29,11 +29,12 @@
 %Name,%(%else-then(%Name%,%(%name%)%)%)%,%
 %NAME,%(%else-then(%NAME%,%(%toupper(%Name%)%)%)%)%,%
 %name,%(%else-then(%_Name%,%(%tolower(%Name%)%)%)%)%,%
+%NameT,%(%else-then(%NameT%,%(%if-no(%is_template%,%Name%,%Name%T)%)%)%)%,%
 %namet,%(%else-then(%namet%,%(%if-no(%is_template%,%Name%,%Name%t)%)%)%)%,%
 %Namet,%(%else-then(%Namet%,%(%namet%)%)%)%,%
 %NAMET,%(%else-then(%NAMET%,%(%toupper(%Namet%)%)%)%)%,%
 %namet,%(%else-then(%_Namet%,%(%tolower(%Namet%)%)%)%)%,%
-%name_implements,%(%else(%implements%,%(yes)%)%)%,%
+%name_implements,%(%else(%implements%,%(%if-no(%is_implements%,,yes)%)%)%)%,%
 %Name_implements,%(%else-then(%Name_implements%,%(%name_implements%)%)%)%,%
 %NAME_IMPLEMENTS,%(%else-then(%NAME_IMPLEMENTS%,%(%toupper(%Name_implements%)%)%)%)%,%
 %name_implements,%(%else-then(%_Name_implements%,%(%tolower(%Name_implements%)%)%)%)%,%
@@ -45,6 +46,7 @@
 %Implements,%(%else-then(%Implements%,%(%implements%)%)%)%,%
 %IMPLEMENTS,%(%else-then(%IMPLEMENTS%,%(%toupper(%Implements%)%)%)%)%,%
 %implements,%(%else-then(%_Implements%,%(%tolower(%Implements%)%)%)%)%,%
+%ImplementsT,%(%else-then(%ImplementsT%,%(%if-no(%is_template%,%Implements%,%Implements%T)%)%)%)%,%
 %implementst,%(%else-then(%implementst%,%(%if-no(%is_template%,%Implements%,%Implements%t)%)%)%)%,%
 %Implementst,%(%else-then(%Implementst%,%(%implementst%)%)%)%,%
 %IMPLEMENTST,%(%else-then(%IMPLEMENTST%,%(%toupper(%Implementst%)%)%)%)%,%
@@ -53,7 +55,9 @@
 %Extends,%(%else-then(%Extends%,%(%extends%)%)%)%,%
 %EXTENDS,%(%else-then(%EXTENDS%,%(%toupper(%Extends%)%)%)%)%,%
 %extends,%(%else-then(%_Extends%,%(%tolower(%Extends%)%)%)%)%,%
-%file,%(%else-then(%do(%file%)%,%(%else-then(%Name%,%(name)%)%)%)%)%,%
+%File_name,%(%else-then(%File_name%,%(%if(%is_lowercase_file%,%name%,%Name%)%)%)%)%,%
+%File_namet,%(%else-then(%File_namet%,%(%File_name%%if-no(%is_template%,,%if(%is_lowercase_file%,t,T)%)%)%)%)%,%
+%file,%(%else-then(%do(%file%)%,%(%else-then(%if(%is_t_file%,%File_namet%,%File_name%)%,%(name)%)%)%)%)%,%
 %File,%(%else-then(%File%,%(%file%)%)%)%,%
 %FILE,%(%else-then(%FILE%,%(%toupper(%File%)%)%)%)%,%
 %file,%(%else-then(%_File%,%(%tolower(%File%)%)%)%)%,%
@@ -111,16 +115,17 @@
 )%)%)%,%
 %c_namespace,%(%else-then(%c_namespace%,%(c_NAMESPACE)%)%)%,%
 %c_NAMESPACE,%(%else-then(%c_NAMESPACE%,%(%c_namespace%)%)%)%,%
-%cnamespace_begin,%(%else-then(%cnamespace_begin%,%(#if defined(%c_NAMESPACE%)
+%cnamespace_begin,%(%else-then(%cnamespace_begin%,%if-no(%is_namespace%,,%(#if defined(%c_NAMESPACE%)
 namespace %c_NAMESPACE% {
 #endif /* defined(%c_NAMESPACE%) */
-)%)%)%,%
+
+)%)%)%)%,%
 %CNamespace_begin,%(%else-then(%CNamespace_begin%,%(%cnamespace_begin%)%)%)%,%
-%cnamespace_end,%(%else-then(%cnamespace_end%,%(
+%cnamespace_end,%(%else-then(%cnamespace_end%,%if-no(%is_namespace%,,%(
 #if defined(%c_NAMESPACE%)
 } /* namespace %c_NAMESPACE% */
 #endif /* defined(%c_NAMESPACE%) */
-)%)%)%,%
+)%)%)%)%,%
 %CNamespace_end,%(%else-then(%CNamespace_end%,%(%cnamespace_end%)%)%)%,%
 %enum_do,%(%else-then(%enum_do%,%(%else-then(%left(%enum_name%,/)%,%(%else-then(%enum_name%,%(%Name%)%)%)%)%)%)%)%,%
 %Enum_do,%(%else-then(%Enum_do%,%(%enum_do%)%)%)%,%

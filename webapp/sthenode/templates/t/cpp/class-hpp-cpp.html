@@ -51,6 +51,7 @@
          onSubmit="return setFormSubmit(getFormValue2('FormTemplate','FormAction','Form'),getFormValue('FormMethod','Form'),'Form')">
          <div class="form"><hr/>
             File: <input name="file" value=""/>[%Name%]
+            T<input type="checkbox" name="is_t_file" value="yes" unchecked=""></input>
             <input type="radio" name="extension" value="hpp" checked="checked">.hpp</input>
             <input type="radio" name="extension" value="cpp">.cpp</input>
             <input type="radio" name="extension" value="hxx">.hxx</input>
@@ -61,6 +62,7 @@
             <input type="radio" name="extension" value="h">.h</input>
             <input type="radio" name="extension" value="c">.c</input>
             <input type="radio" name="extension" value="m">.m</input>
+            <input type="checkbox" name="is_lowercase_file" value="yes" unchecked="">lowercase</input>
             <br/>
             Template: <select name="FormTemplate">
             <option value="http://localhost/sthenode/templates/t/cpp/class-hpp-cpp.t">C++ class --- (class-hpp-cpp.t)</option>

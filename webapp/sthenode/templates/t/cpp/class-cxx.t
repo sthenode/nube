@@ -1,5 +1,5 @@
 %########################################################################
-%# Copyright (c) 1988-2018 $organization$
+%# Copyright (c) 1988-2019 $organization$
 %#
 %# This software is provided by the author and contributors ``as is'' 
 %# and any express or implied warranties, including, but not limited to, 
@@ -13,24 +13,36 @@
 %# or otherwise) arising in any way out of the use of this software, 
 %# even if advised of the possibility of such damage.
 %#
-%#   File: hxx.t
+%#   File: class-cxx.t
 %#
 %# Author: $author$
-%#   Date: 4/13/2018
+%#   Date: 5/1/2019
 %########################################################################
 %with(%
 %include_path,%(%else-then(%include_path%,%(%filepath(%input%)%)%)%)%,%
 %%(%
 %%include(%include_path%/file-hxx-cxx.t)%%
-%#ifndef %IFNDEF_DIRECTORY%_%BASE%_%EXTENSION%
-#define %IFNDEF_DIRECTORY%_%BASE%_%EXTENSION%
+%#include "%if-then(%Include_directory%,/,)%%Base%.%CHeader%"
 
-%if-then(%parse(%Include%,%(,)%,,,,%(#include "%Include%"
-)%,Include)%%parse(%Sys_include%,%(,)%,,,,%(#include <%Include%>
-)%,Include)%,
-)%%
-%%if-then(%CNamespace_begin%%CNamespace_end%,
-)%%
-%#endif /* %IFNDEF_DIRECTORY%_%BASE%_%EXTENSION% */
+%CNamespace_begin%%
+%%if-no(%is_implements%,,%(%if(%Name_implements%,%(/**
+ **********************************************************************
+ *  Class: %ImplementsT%
+ *
+ * Author: %Author%
+ *   Date: %date()%
+ **********************************************************************
+ */
+
+)%)%)%)%%if-no(%is_name%,,%(/**
+ **********************************************************************
+ *  Class: %NameT%
+ *
+ * Author: %Author%
+ *   Date: %date()%
+ **********************************************************************
+ */
+)%)%%
+%%CNamespace_end%%
 %
 %)%)%

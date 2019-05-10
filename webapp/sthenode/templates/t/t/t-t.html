@@ -57,7 +57,9 @@
 
             File: <input name="File" value="t.t"></input>
                   <input type="checkbox" name="is_File" value="no" unchecked="checked">no</input><br/>
-            Parameters: <input name="Parameters" value="Organization;Author"></input>
+            Parameters: <input name="Parameters" value="Organization=$organization$;Author=$author$;File;Name=%else-then(%filebase(%File%)%,%File%)%;Extension=%fileextension(%File%)%"></input>
+                  lower<input type="checkbox" name="is_Lower" value="no" checked="checked">no</input>
+                  upper/lower<input type="checkbox" name="is_UpperLower" value="no" checked="checked">no</input>
                   <input type="checkbox" name="is_Parameters" value="no" unchecked="checked">no</input><br/>
             Organization: <input name="Organization" value=""></input>
                   <input type="checkbox" name="is_Organization" value="no" unchecked="checked">no</input><br/>
