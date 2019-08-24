@@ -33,9 +33,13 @@
 %parameter,%(%else-then(%parameter%,%(%tolower(%Parameter%)%)%)%)%,%
 %%(%
 %%if-no(%is_Lower%,%(%
+%%%is_%Parameter%%(,)%%%%(()%%%else-then%(()%%%is_%Parameter%%%%(,)%%%%(()%%is_Parameter%%())%%%%())%%%%())%%%%(,)%%%
+%
 %%%%Parameter%%(,)%%%%(()%%%else-then%(()%%%%Parameter%%%%(,)%%%%(()%%Value%%())%%%%())%%%%())%%%%(,)%%%
 %
 %)%,%(%
+%%%is_%parameter%%(,)%%%%(()%%%else-then%(()%%%is_%parameter%%%%(,)%%%%(()%%is_Parameter%%())%%%%())%%%%())%%%%(,)%%%
+%
 %%%%parameter%%(,)%%%%(()%%%else-then%(()%%%%parameter%%%%(,)%%%%(()%%Value%%())%%%%())%%%%())%%%%(,)%%%
 %
 %%if-no(%is_UpperLower%,,%(%

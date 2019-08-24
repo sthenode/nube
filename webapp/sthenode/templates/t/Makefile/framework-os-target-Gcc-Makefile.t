@@ -125,6 +125,11 @@ include $(PKG)/$(MAK)/%if(%Lib%,lib,app)%/%Target%/Makefile
 #
 %OUT%TARGET = ${%Target%%Exe%_%OUT%TARGET}
 
+#
+# headers
+#
+%OUT%HEADERS = ${%Target%%Exe%_%OUT%HEADERS}
+
 ########################################################################
 
 #

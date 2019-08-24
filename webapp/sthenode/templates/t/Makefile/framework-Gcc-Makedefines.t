@@ -109,8 +109,12 @@ OS = macosx
 endif
 endif
 
+ifndef BUILD_OS
+BUILD_OS = $(OS)
+endif
+
 ifndef BLD
-BLD = build/$(OS)
+BLD = build/$(BUILD_OS)
 endif
 
 ifndef INS

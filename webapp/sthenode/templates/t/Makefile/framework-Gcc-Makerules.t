@@ -81,7 +81,11 @@
 %title,%(%else-then(%_Title%,%(%tolower(%Title%)%)%)%)%,%
 %%(%
 %%include(%Filepath%/Makefile-file.t)%%
-%ifdef LIBTARGET
+%ifdef LIBHEADERS
+INCLUDEINSTALL = install-include
+endif
+
+ifdef LIBTARGET
 LIBINSTALL = install-lib
 endif
 
@@ -213,6 +217,11 @@ sources: lib_sources slib_sources exe_sources
 # install
 #
 
+install-include: ${LIBHEADERS} ${INSINCLUDE}
+	@(echo "Installing Include - " ${LIBHEADERS}...;\
+	  ((cp -r ${LIBHEADERS} $(INSINCLUDE)) || (exit 1));\
+	  echo ..."Installed Include - " ${LIBHEADERS})
+
 install-lib: ${LIBTARGET} ${INSLIB}
 	@(echo "Installing Lib - " ${LIBTARGET}...;\
 	  ((cp -r $(LIBDIR)/${LIBTARGET} $(INSLIB)) || (exit 1));\
@@ -237,6 +246,11 @@ ${INSLIB}:
 	@(echo "Makeing Library Directory - " ${INSLIB}...;\
 	  ((mkdir -p $(INSLIB)) || (exit 1));\
 	  echo ..."Made Library Directory - " ${INSLIB})
+
+${INSINCLUDE}:
+	@(echo "Makeing Include Directory - " ${INSINCLUDE}...;\
+	  ((mkdir -p $(INSINCLUDE)) || (exit 1));\
+	  echo ..."Made Include Directory - " ${INSINCLUDE})
 
 #
 # build

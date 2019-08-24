@@ -64,6 +64,8 @@
             <input type="radio" name="extension" value="m">.m</input>
             <input type="checkbox" name="is_lowercase_file" value="yes" unchecked="">lowercase</input>
             <br/>
+            Vendor: <input name="vendor" value=""/>[xos]
+            <input type="checkbox" name="is_vendor" value="no" checked=""/>no<br/>
             Template: <select name="FormTemplate">
             <option value="http://localhost/sthenode/templates/t/cpp/class-hpp-cpp.t">C++ class --- (class-hpp-cpp.t)</option>
             <option value="http://localhost/sthenode/templates/t/cpp/hpp-cpp.t">C/C++ --- (hpp-cpp.t)</option>
@@ -71,8 +73,6 @@
             <option value="http://localhost/sthenode-cgi/cgi">cgi parameters</option>
             <option value=""/>
             </select><br/>
-            Vendor: <input name="vendor" value=""/>[xos]
-            <input type="checkbox" name="is_vendor" value="no" checked=""/>no<br/>
             <br/>
 
             <b>#ifndef </b><input name="ifndef_directory" value="xos/base"/><b></b>[xos]

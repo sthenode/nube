@@ -84,13 +84,12 @@
 %#
 # build HOME
 #
-ifndef BUILD_HOME
-ifdef PKG
-BUILD_HOME = $(PKG)/../..
-else
-BUILD_HOME = $(HOME)
-endif
-endif
+#BUILD_HOME = $(HOME)
+
+#
+# build OS
+#
+#BUILD_OS = os
 
 #
 # build UNAME
@@ -107,6 +106,17 @@ ifneq ($(UNAME),Darwin)
 OS = linux
 else
 OS = macosx
+endif
+endif
+
+#
+# build HOME
+#
+ifndef BUILD_HOME
+ifdef PKG
+BUILD_HOME = $(PKG)/../..
+else
+BUILD_HOME = $(HOME)
 endif
 endif
 

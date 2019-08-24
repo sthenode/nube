@@ -135,6 +135,21 @@ ${%Framework%_USRLIBDIRS} \
 
 ########################################################################
 
+%parse(h;hh;hxx;hpp,;,,,,%(#
+# %Output% .%cpp% headers
+#
+#%Target%%Exe%_%OUT%_%toupper(%cpp%)%_HEADERS += \
+#${%FRAMEWORK%_SRC}/%Framework%/base/Base.%cpp% \
+
+)%,cpp)%
+#
+# %Output% headers
+#
+%Target%%Exe%_%OUT%HEADERS += \
+%parse(h;hh;hxx;hpp,;,,,,%(${%Target%%Exe%_%OUT%_%toupper(%cpp%)%_HEADERS} \
+)%,cpp)%
+########################################################################
+
 %parse(c;cc;cxx;cpp;m;mm,;,,,,%(#
 # %Output% .%cpp% sources
 #
