@@ -42,6 +42,9 @@
 )%)%class _EXPORT_CLASS %Implementst%: virtual public %if-no(%is_template%,%Implementst%_implements,TImplements)% {
 public:
     typedef %if-no(%is_template%,%Implementst%_implements,TImplements)% implements;
+
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
 }; /// class _EXPORT_CLASS %Implementst%
 %if-no(%is_template%,,%(typedef %Implementst%<> %Implements%;
 )%)%
@@ -55,13 +58,19 @@ public:
 public:
     %if(%Implements%,%(typedef %if-no(%is_template%,%Namet%_implements,TImplements)% implements;
     )%)%typedef %if-no(%is_template%,%Namet%_extends,TExtends)% extends;
-
-    %Namet%(const %Namet% &copy) {
+    typedef %Namet% derives;
+    %if(%Copy_constructor%%Constructor%%Destructor%,%(
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    )%)%%if(%Copy_constructor%,%(%Namet%(const %Namet% &copy) {
     }
-    %Namet%() {
+    )%)%%if(%Constructor%,%(%Namet%() {
     }
-    virtual ~%Namet%() {
+    )%)%%if(%Destructor%,%(virtual ~%Namet%() {
     }
+)%)%
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
 }; /// class _EXPORT_CLASS %Namet%
 %if-no(%is_template%,,%(typedef %Namet%<> %Name%;
 )%)%)%,%(%if(%Implements%,%(typedef %Implements% %Namet%_implements;
@@ -72,13 +81,19 @@ public:
 )%class _EXPORT_CLASS %Namet%: virtual public %if-no(%is_template%,%Namet%_implements,TImplements)% {
 public:
     typedef %if-no(%is_template%,%Namet%_implements,TImplements)% implements;
-
-    %Namet%(const %Namet% &copy) {
+    typedef %Namet% derives;
+    %if(%Copy_constructor%%Constructor%%Destructor%,%(
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    )%)%%if(%Copy_constructor%,%(%Namet%(const %Namet% &copy) {
     }
-    %Namet%() {
+    )%)%%if(%Constructor%,%(%Namet%() {
     }
-    virtual ~%Namet%() {
+    )%)%%if(%Destructor%,%(virtual ~%Namet%() {
     }
+)%)%
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
 }; /// class _EXPORT_CLASS %Namet%
 %if-no(%is_template%,,typedef %Namet%<> %Name%;
 )%)%,%(///////////////////////////////////////////////////////////////////////
@@ -86,12 +101,19 @@ public:
 ///////////////////////////////////////////////////////////////////////
 class _EXPORT_CLASS %Name% {
 public:
-    %Name%(const %Name% &copy) {
+    typedef %Name% derives;
+    %if(%Copy_constructor%%Constructor%%Destructor%,%(
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
+    )%)%%if(%Copy_constructor%,%(%Name%(const %Name% &copy) {
     }
-    %Name%() {
+    )%)%%if(%Constructor%,%(%Name%() {
     }
-    virtual ~%Name%() {
+    )%)%%if(%Destructor%,%(virtual ~%Name%() {
     }
+)%)%
+    ///////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////
 }; /// class _EXPORT_CLASS %Name%
 )%)%)%)%)%)%%Namespace_end%
 #endif /// %IFNDEF_DIRECTORY%_%BASE%_%EXTENSION% 

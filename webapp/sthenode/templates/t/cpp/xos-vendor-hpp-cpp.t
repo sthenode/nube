@@ -30,18 +30,6 @@
 %Extends_base,%(%else-then(%Extends_base%,%(%extends_base%)%)%)%,%
 %EXTENDS_BASE,%(%else-then(%EXTENDS_BASE%,%(%toupper(%Extends_base%)%)%)%)%,%
 %extends_base,%(%else-then(%_Extends_base%,%(%tolower(%Extends_base%)%)%)%)%,%
-%is_constructor,%(%else-then(%is_constructor%,%(yes)%)%)%,%
-%constructor,%(%else-then(%constructor%,%()%)%)%,%
-%Constructor,%(%else-then(%Constructor%,%(%constructor%)%)%)%,%
-%Constructor,%(%if-then(%Constructor%,%( )%)%)%,%
-%CONSTRUCTOR,%(%else-then(%CONSTRUCTOR%,%(%toupper(%Constructor%)%)%)%)%,%
-%constructor,%(%else-then(%_Constructor%,%(%tolower(%Constructor%)%)%)%)%,%
-%is_destructor,%(%else-then(%is_destructor%,%(yes)%)%)%,%
-%destructor,%(%else-then(%destructor%,%(virtual)%)%)%,%
-%Destructor,%(%else-then(%Destructor%,%(%destructor%)%)%)%,%
-%Destructor,%(%if-then(%Destructor%,%( )%)%)%,%
-%DESTRUCTOR,%(%else-then(%DESTRUCTOR%,%(%toupper(%Destructor%)%)%)%)%,%
-%destructor,%(%else-then(%_Destructor%,%(%tolower(%Destructor%)%)%)%)%,%
 %%(%
 %%include(%filepath(%input%)%/vendor-hpp-cpp.t)%%
 %)%)%

@@ -13,18 +13,18 @@
 %# or otherwise) arising in any way out of the use of this software, 
 %# even if advised of the possibility of such damage.
 %#
-%#   File: t.t
+%#   File: run-hpp-cpp.t
 %#
 %# Author: $author$
-%#   Date: 2/5/2019
+%#   Date: 9/19/2019
 %########################################################################
 %with(%
 %include_path,%(%else-then(%include_path%,%(%filepath(%input%)%)%)%)%,%
+%is_extension,%(%else-then(%is_extension%,%()%)%)%,%
+%extension,%(%else-then(%extension%,%(hpp)%)%)%,%
+%Extension,%(%else-then(%Extension%,%(%extension%)%)%)%,%
+%EXTENSION,%(%else-then(%EXTENSION%,%(%toupper(%Extension%)%)%)%)%,%
+%extension,%(%else-then(%_Extension%,%(%tolower(%Extension%)%)%)%)%,%
 %%(%
-%%include(%include_path%/file-t.t)%%
-%%%with%(()%%%
-%%include_path,%%%(()%%%else-then%(()%%%include_path%%,%%%(()%%%filepath%(()%%%input%%%())%%%%())%%%%())%%%%())%%%%(,)%%%
-%include(%include_path%/parameters-t.t)%%%%%%(()%%%
-%%%%include%(()%%%include_path%%%())%%%%%
-%%%())%%%%())%%%%
+%%include(%include_path%/run-%Extension%-%Extension%.t)%%
 %)%)%

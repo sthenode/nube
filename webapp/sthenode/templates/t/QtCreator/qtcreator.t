@@ -13,18 +13,13 @@
 %# or otherwise) arising in any way out of the use of this software, 
 %# even if advised of the possibility of such damage.
 %#
-%#   File: t.t
+%#   File: qtcreator.t
 %#
 %# Author: $author$
-%#   Date: 2/5/2019
+%#   Date: 10/13/2019
 %########################################################################
 %with(%
 %include_path,%(%else-then(%include_path%,%(%filepath(%input%)%)%)%)%,%
 %%(%
-%%include(%include_path%/file-t.t)%%
-%%%with%(()%%%
-%%include_path,%%%(()%%%else-then%(()%%%include_path%%,%%%(()%%%filepath%(()%%%input%%%())%%%%())%%%%())%%%%())%%%%(,)%%%
-%include(%include_path%/parameters-t.t)%%%%%%(()%%%
-%%%%include%(()%%%include_path%%%())%%%%%
-%%%())%%%%())%%%%
+%%include(%include_path%)%%
 %)%)%

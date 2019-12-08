@@ -98,7 +98,11 @@ contains(UNAME,Linux) {
 } # contains(UNAME,Darwin)
 )%,%(%FRAMEWORK%_OS = %os%
 )%)%
+contains(BUILD_OS,OS) {
+BUILD_OS = os
+} else {
 BUILD_OS = $${%FRAMEWORK%_OS}
+} # contains(BUILD_OS,OS)
 
 #CONFIG += c++11
 #CONFIG += c++0x

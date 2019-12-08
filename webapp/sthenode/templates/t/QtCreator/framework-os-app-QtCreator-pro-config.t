@@ -33,6 +33,12 @@
 %Os,%(%else-then(%Os%,%(%else-then(%Os2%,%(%os%)%)%)%)%)%,%
 %OS,%(%else-then(%OS%,%(%toupper(%Os%)%)%)%)%,%
 %os,%(%else-then(%_Os%,%(%tolower(%Os%)%)%)%)%,%
-%%(%Framework%/build/%os%/QtCreator/Debug/bin/%Target%
+%%(
+%Framework%/build/%os%/QtCreator/Debug/bin/%Target%
+
 %Framework%/build/%os%/QtCreator/Release/bin/%Target%
-)%)%
+
+%Framework%/build/%os%/QtCreator/Profile/bin/%Target%
+%
+%%include(%include_path%/framework-os-QtCreator-pro-config.t)%%
+%)%)%

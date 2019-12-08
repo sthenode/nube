@@ -13,18 +13,31 @@
 %# or otherwise) arising in any way out of the use of this software, 
 %# even if advised of the possibility of such damage.
 %#
-%#   File: t.t
+%#   File: version-hpp.t
 %#
 %# Author: $author$
-%#   Date: 2/5/2019
+%#   Date: 10/23/2019
 %########################################################################
 %with(%
 %include_path,%(%else-then(%include_path%,%(%filepath(%input%)%)%)%)%,%
 %%(%
-%%include(%include_path%/file-t.t)%%
-%%%with%(()%%%
-%%include_path,%%%(()%%%else-then%(()%%%include_path%%,%%%(()%%%filepath%(()%%%input%%%())%%%%())%%%%())%%%%())%%%%(,)%%%
-%include(%include_path%/parameters-t.t)%%%%%%(()%%%
-%%%%include%(()%%%include_path%%%())%%%%%
-%%%())%%%%())%%%%
+%#ifndef %IFNDEF_DIRECTORY%_%BASE%_%EXTENSION%
+#define %IFNDEF_DIRECTORY%_%BASE%_%EXTENSION%
+
+%if-then(%parse(%Include%,%(,)%,,,,%(#include "%Include%"
+)%,Include)%%parse(%Sys_include%,%(,)%,,,,%(#include <%Include%>
+)%,Include)%,
+)%%
+%%if-then(%Namespace_begin%%
+%///////////////////////////////////////////////////////////////////////
+///  Class: %Name%
+///////////////////////////////////////////////////////////////////////
+class _EXPORT_CLASS %Name% {
+    static const lib::version& which();
+}; /// class _EXPORT_CLASS %Name%
+%
+%%Namespace_end%,
+)%%
+%#endif /// %IFNDEF_DIRECTORY%_%BASE%_%EXTENSION% 
+%
 %)%)%

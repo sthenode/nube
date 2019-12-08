@@ -67,11 +67,15 @@
             Vendor: <input name="vendor" value=""/>[xos]
             <input type="checkbox" name="is_vendor" value="no" checked=""/>no<br/>
             Template: <select name="FormTemplate">
-            <option value="http://localhost/sthenode/templates/t/cpp/class-hpp-cpp.t">C++ class --- (class-hpp-cpp.t)</option>
-            <option value="http://localhost/sthenode/templates/t/cpp/hpp-cpp.t">C/C++ --- (hpp-cpp.t)</option>
-            <option value="http://localhost/sthenode/templates/t/cpp/objc-hh-mm.t">Objective C/C++ --- (objc-hh-mm.t)</option>
-            <option value="http://localhost/sthenode-cgi/cgi">cgi parameters</option>
+            <option value="/sthenode/templates/t/cpp/class-hpp-cpp.t">C++ class --- (class-hpp-cpp.t)</option>
+            <option value="/sthenode/templates/t/cpp/hpp-cpp.t">C/C++ --- (hpp-cpp.t)</option>
+            <option value="/sthenode/templates/t/cpp/objc-hh-mm.t">Objective C/C++ --- (objc-hh-mm.t)</option>
             <option value=""/>
+            <option value="/sthenode-cgi/cgi?this=/sthenode-cgi/cgi">cgi parameters</option>
+            <option value="/sthenode-cgi/cgicatch?this=/sthenode-cgi/cgicatch">catch cgi parameters</option>
+            <option value=""/>
+            <option value="http://localhost:8080/sthenode/templates/t/cpp/class-hpp-cpp.t?this=http://localhost:8080/sthenode/templates/t/cpp/class-hpp-cpp.t">localhost port 8080</option>
+            <option value="https://localhost:4433/sthenode/templates/t/cpp/class-hpp-cpp.t?this=https://localhost:4433/sthenode/templates/t/cpp/class-hpp-cpp.t">localhost port 4433</option>
             </select><br/>
             <br/>
 
@@ -115,6 +119,7 @@
             <option value="http://localhost/sthenode/templates/t/cpp/class-hpp-cpp.t">class-hpp-cpp.t</option>
             <option value="http://localhost/sthenode-cgi/cgi">cgi parameters</option>
             <option value=""></option>
+            <option value="http://localhost:8080/sthenode/templates/t/cpp/class-hpp-cpp.t">localhost:8080</option>
             </select><br/>
             Method: <select name="FormMethod">
             <option value="POST">POST</option>
@@ -126,20 +131,26 @@
 
             <table><tr>
                 <td><a href="../QtCreator/framework-qtcreator.html">
-                <b>Create Framework QtCreator Project</b></a></td>
+                <b>QtCreator Project</b></a></td>
                 <td width="20"/>
 
                 <td><a href="../Makefile/framework-Gcc-Makefile.html">
-                <b>Create Framework Gcc Makefile<b></a></td>
+                <b>Gcc Makefile<b></a></td>
                 <td width="20"/>
 
-                <td><a href="../html/form-html.html"><b>Create HTML Form<b></a></td>
+                <td><a href="../html/form-html.html"><b>HTML Form<b></a></td>
                 <td width="20"/>
 
-                <td><a href="../html/html.html"><b>Create HTML File<b></a></td>
+                <td><a href="../html/html.html"><b>HTML File<b></a></td>
                 <td width="20"/>
 
+                <td><a href="main-hpp-cpp.html">C++ <b>class main {}</b></a></td>
+                <td width="20"/>
+            
                 <td><a href="http://localhost/source/sthenode"><b>/sthenode/</b></a></td>
+                <td width="20"/>
+                
+                <td><a href=".."><b>..<b></a></td>
             </tr></table>
         </form>
     </body>

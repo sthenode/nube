@@ -13,18 +13,23 @@
 %# or otherwise) arising in any way out of the use of this software, 
 %# even if advised of the possibility of such damage.
 %#
-%#   File: t.t
+%#   File: framework-os-QtCreator-pro-config.t
 %#
 %# Author: $author$
-%#   Date: 2/5/2019
+%#   Date: 10/27/2019
 %########################################################################
 %with(%
 %include_path,%(%else-then(%include_path%,%(%filepath(%input%)%)%)%)%,%
-%%(%
-%%include(%include_path%/file-t.t)%%
-%%%with%(()%%%
-%%include_path,%%%(()%%%else-then%(()%%%include_path%%,%%%(()%%%filepath%(()%%%input%%%())%%%%())%%%%())%%%%())%%%%(,)%%%
-%include(%include_path%/parameters-t.t)%%%%%%(()%%%
-%%%%include%(()%%%include_path%%%())%%%%%
-%%%())%%%%())%%%%
-%)%)%
+%%(
+BUILD_OS = %FRAMEWORK%_OS
+
+contains(BUILD_OS,%FRAMEWORK%_OS) {
+BUILD_OS = $${%FRAMEWORK%_OS}
+} else {
+BUILD_OS = os
+}
+
+contains(%FRAMEWORK%_OS,linux) {
+QMAKE_CXXFLAGS += -fpermissive
+}
+)%)%
