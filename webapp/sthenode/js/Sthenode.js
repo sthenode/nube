@@ -279,10 +279,66 @@ function onDropoverClick(dropover) {
 
 /*
 **
+** function onPopdownClick
+** 
+*/
+var thisPopdown = false, initPopdown = false;
+function onPopdownInit(popdown) {
+    thisPopdown = popdown;
+    initPopdown = true;
+}
+function onPopdownClick(popdown, event) {
+    if (!popdown) { popdown = "myPopdown"; }
+    if (popdown) {
+        var x = document.getElementById(popdown);
+        if (x) {
+            thisPopdown = popdown;
+            if (x.style.display !== "block") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+    }
+    if (event) {
+        if (event.stopPropagation) {
+            event.stopPropagation();
+        } else {
+            if (window.event) {
+                window.event.cancelBubble = true;
+            }
+        }
+    }
+}
+function myPopdownClick(popdown, event) {
+    if (!popdown) { popdown = "myPopdown"; }
+    onPopdownClick(popdown, event);
+}
+
+/*
+**
 ** window.onclick = function
 ** 
 */
 window.onclick = function(event) {
+    if ((!event.target.matches('.popdown')) 
+        && (!event.target.matches('.popdown-button')) 
+        && (!event.target.matches('.popdown-dots')) 
+        && (!event.target.matches('.popdown-dot'))
+        && (!event.target.matches('.popdown-content'))
+        && (!event.target.matches('.popdown-item'))
+        && (thisPopdown)) {
+        var x = document.getElementById(thisPopdown);
+        if (x) {
+            if (x.style.display === "block") {
+                x.style.display = "none";
+            } else {
+                if (initPopdown) { 
+                    x.style.display = "block"; 
+                }
+            }
+        }
+    }
     if ((!event.target.matches('.dropdown')) 
         && (!event.target.matches('.dropdown-button')) 
         && (!event.target.matches('.dropdown-bars')) 

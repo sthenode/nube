@@ -114,6 +114,16 @@
                 <br/>
                 Vendor: <input name="vendor" value=""/>
                 <input type="checkbox" name="is_vendor" value="no" checked=""/>no<br/>
+                Template: <select name="FormTemplate">
+                <option value="../templates/t/cpp/class-hpp-cpp.t">class-hpp-cpp.t</option>
+                <option value="../templates/t/cpp/hpp-cpp.t">hpp-cpp.t</option>
+                <option value=""></option>
+                <option value="../templates/t/cxx/class-hxx-cxx.t">class-hxx-cxx.t</option>
+                <option value="../templates/t/cxx/hxx-cxx.t">hxx-cxx.t</option>
+                <option value=""></option>
+                <option value="/sthenode-cgi/cgi">cgi parameters</option>
+                <option value="/sthenode-cgi/cgicatch">catch cgi parameters</option>
+                </select><br/>
 
                 <br/>
                 <b>#ifndef </b><input name="ifndef_directory" value="xos"/><b></b>
@@ -130,11 +140,38 @@
                 <b>template &lt;</b> <input name="template" value=""/><b>&gt;</b>
                 <input type="checkbox" name="is_template" value="no" unchecked=""/>no<br/>
                 <b>class</b> <input name="name" value="derive"/>
-                <input type="checkbox" name="is_name" value="no" unchecked=""/>no<br/>
+                <input type="checkbox" name="is_name" value="no" unchecked=""/>no
+                <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;typedef</b> <select name="typedef_derives">
+                <option value="derives">derives</option>
+                <option value="Derives">Derives</option>
+                <option value="cDerives">cDerives</option>
+                <option value="CDerives">cDerives</option>
+                <option value=""></option>
+                </select><b>;</b>
+                <input type="checkbox" name="is_typedef_derives" value="no" unchecked=""/>no
+                <br/>
                 <b>: virtual public</b> <input name="implements" value="implement"/>
-                <input type="checkbox" name="is_implements" value="no" unchecked=""/>no<br/>
+                <input type="checkbox" name="is_implements" value="no" unchecked=""/>no
+                <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;typedef</b> <select name="typedef_implements">
+                <option value="implements">implements</option>
+                <option value="Implements">Implements</option>
+                <option value="cImplements">cImplements</option>
+                <option value="CImplements">CImplements</option>
+                <option value=""></option>
+                </select><b>;</b>
+                <input type="checkbox" name="is_typedef_implements" value="no" unchecked=""/>no
+                <br/>
                 <b>, public</b> <input name="extends" value="extend"/><b> {</b>
-                <input type="checkbox" name="is_extends" value="no" unchecked=""/>no<br>
+                <input type="checkbox" name="is_extends" value="no" unchecked=""/>no
+                <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;typedef</b> <select name="typedef_extends">
+                <option value="extends">extends</option>
+                <option value="Extends">Extends</option>
+                <option value="cExtends">cExtends</option>
+                <option value="CExtends">CExtends</option>
+                <option value=""></option>
+                </select><b>;</b>
+                <input type="checkbox" name="is_typedef_extends" value="no" unchecked=""/>no
+                <br>
                 &nbsp;&nbsp;&nbsp;&nbsp;<b>(const </b><b>&amp;</b>copy<b>) {}</b>
                 <input type="checkbox" name="is_copy_constructor" value="no" unchecked=""/>no<br>
                 &nbsp;&nbsp;&nbsp;&nbsp;<b>(</b><b>) {}</b>

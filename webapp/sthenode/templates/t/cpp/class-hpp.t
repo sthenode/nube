@@ -41,7 +41,7 @@
 %if-no(%is_template%,,%(template <class TImplements = %Implementst%_implements>
 )%)%class _EXPORT_CLASS %Implementst%: virtual public %if-no(%is_template%,%Implementst%_implements,TImplements)% {
 public:
-    typedef %if-no(%is_template%,%Implementst%_implements,TImplements)% implements;
+    typedef %if-no(%is_template%,%Implementst%_implements,TImplements)% %Typedef_implements%;
 
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
@@ -56,9 +56,9 @@ public:
 %if-no(%is_template%,,%(template <%if(%Implements%,%(class TImplements = %Namet%_implements, )%)%class TExtends = %Namet%_extends>
 )%)%class _EXPORT_CLASS %Namet%: %if(%Implements%,%(virtual public %if-no(%is_template%,%Namet%_implements,TImplements)%, )%)%public %if-no(%is_template%,%Namet%_extends,TExtends)% {
 public:
-    %if(%Implements%,%(typedef %if-no(%is_template%,%Namet%_implements,TImplements)% implements;
-    )%)%typedef %if-no(%is_template%,%Namet%_extends,TExtends)% extends;
-    typedef %Namet% derives;
+    %if(%Implements%,%(typedef %if-no(%is_template%,%Namet%_implements,TImplements)% %Typedef_implements%;
+    )%)%typedef %if-no(%is_template%,%Namet%_extends,TExtends)% %Typedef_extends%;
+    typedef %Namet% %Typedef_derives%;
     %if(%Copy_constructor%%Constructor%%Destructor%,%(
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
@@ -80,8 +80,8 @@ public:
 %if-no(%is_template%,,template <class TImplements = %Namet%_implements>
 )%class _EXPORT_CLASS %Namet%: virtual public %if-no(%is_template%,%Namet%_implements,TImplements)% {
 public:
-    typedef %if-no(%is_template%,%Namet%_implements,TImplements)% implements;
-    typedef %Namet% derives;
+    typedef %if-no(%is_template%,%Namet%_implements,TImplements)% %Typedef_implements%;
+    typedef %Namet% %Typedef_derives%;
     %if(%Copy_constructor%%Constructor%%Destructor%,%(
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
@@ -101,7 +101,7 @@ public:
 ///////////////////////////////////////////////////////////////////////
 class _EXPORT_CLASS %Name% {
 public:
-    typedef %Name% derives;
+    typedef %Name% %Typedef_derives%;
     %if(%Copy_constructor%%Constructor%%Destructor%,%(
     ///////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////
